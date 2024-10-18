@@ -16,7 +16,6 @@ export default function Home() {
       router.push("/onboard");
     }
   }, [session, router])
-  console.log(session?.user)
   return (
     <>
       <HeroSection />

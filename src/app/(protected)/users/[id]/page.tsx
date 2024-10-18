@@ -31,8 +31,8 @@ export default async function UserProfile({ params }: UserProfileProps) {
                         <h2 className="text-xl font-semibold">{user.name}</h2>
                         <p className="text-gray-500">{user.email}</p>
                         <p className="text-gray-700 font-medium">Role: {user.role}</p>
-                        <Badge color={user.isEmailVerified ? 'blue' : 'red'}>
-                            {user.isEmailVerified ? 'Email Verified' : 'Email Not Verified'}
+                        <Badge color={user.emailVerified ? 'blue' : 'red'}>
+                            {user.emailVerified ? 'Email Verified' : 'Email Not Verified'}
                         </Badge>
 
                         {/* Display user onboarding, verification status */}
@@ -83,9 +83,9 @@ export default async function UserProfile({ params }: UserProfileProps) {
 
                 {/* User Jobs */}
                 <div className="mt-6 w-full">
-                    <h3 className="text-xl font-semibold mb-2">Jobs Posted</h3>
-                    {user.jobs.length > 0 ? (
-                        user.jobs.map((job) => (
+                    <h3 className="text-xl font-semibold mb-2">Project`&apos;`s Posted</h3>
+                    {user.projects.length > 0 ? (
+                        user.projects.map((job) => (
                             <Card key={job.id} className="mb-4">
                                 <CardHeader>
                                     <CardTitle>{job.title}</CardTitle>

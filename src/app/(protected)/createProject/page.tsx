@@ -31,9 +31,6 @@ export default function CreateProject() {
     const [isPending, startTransition] = useTransition();
 
     async function onSubmit(values: z.infer<typeof projectSchema>) {
-        console.log("Submitting form...");
-        console.log("Form values:", values);
-
         if (!session) {
             toast({
                 title: "Error",

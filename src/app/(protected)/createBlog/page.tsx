@@ -17,7 +17,6 @@ export default function BlogForm() {
     const authorId = session?.user?.id;
     const { toast } = useToast();
     const router = useRouter();
-    console.log("This is authorId", authorId);
     const form = useForm<z.infer<typeof blogSchema>>({
         resolver: zodResolver(blogSchema),
         defaultValues: {

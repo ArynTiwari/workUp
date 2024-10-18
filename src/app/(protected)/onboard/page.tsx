@@ -57,7 +57,6 @@ export default function SignIn() {
     const [isPending, startTransition] = useTransition();
 
     const onSubmit = (data: z.infer<typeof onboardSchema>) => {
-        console.log(data)
         startTransition(() => {
             updateUserProfile(data, id!)
                 .then(async (response) => {

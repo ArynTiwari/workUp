@@ -1,3 +1,4 @@
+"use client"
 import LoadingSpinner from "@/components/loading-spinner";
 import { useSession } from "next-auth/react";
 import React from "react";

@@ -1,10 +1,9 @@
 import { NewVerification } from '@/components/new-verification'
 import React from 'react'
 
-const verificationPage = () => {
+export default function NewVerificationPage() {
     return (
         <NewVerification />
     )
 }
 
-export default verificationPage

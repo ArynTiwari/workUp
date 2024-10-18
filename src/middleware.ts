@@ -19,7 +19,6 @@ export default middleware((req): NextResponse => {
         return NextResponse.next();
     }
     if (!isLoggedIn && !isPublicRoute) {
-        console.log("Redirecting to signin from middleware");
         return NextResponse.redirect(new URL("/auth/signin", nextUrl));
     }
     return NextResponse.next();

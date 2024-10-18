@@ -1,13 +1,13 @@
-"use client";
+"use client"; // Ensuring this is a client component
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, Suspense } from "react";
 import { Card, CardHeader, CardContent, CardFooter } from "./ui/card";
 import { useSearchParams } from "next/navigation";
 import { newVerification } from "@/app/actions/userActions";
 import { AlertCircle, CheckCircle } from "lucide-react"; // Icons for visual feedback
 import LoadingButton from "@/components/loading-button"; // Assuming you have a LoadingButton component
 
-export const NewVerification = () => {
+const NewVerificationContent = () => {
     const [error, setError] = useState<string | undefined>();
     const [success, setSuccess] = useState<string | undefined>();
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -80,5 +80,14 @@ export const NewVerification = () => {
                 </CardFooter>
             </Card>
         </div>
+    );
+};
+
+// Wrap your component in a Suspense boundary
+export const NewVerification = () => {
+    return (
+        <Suspense fallback={<div className="flex justify-center p-4">Loading...</div>}>
+            <NewVerificationContent />
+        </Suspense>
     );
 };
