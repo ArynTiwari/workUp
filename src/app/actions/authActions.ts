@@ -10,7 +10,9 @@ const handleSignOut = async () => {
 const handleGitHubSignIn = async () => {
     await signIn("discord", { redirectTo: "/" });
 };
-
+const handleGoogleSignIn = async () => {
+    await signIn("google", { redirectTo: "/" });
+};
 export async function handleCredentialsSignin({
     email,
     password,
@@ -63,4 +65,4 @@ export async function handleCredentialsSignin({
         };
     }
 }
-export { handleSingnIn, handleSignOut, handleGitHubSignIn };
+export { handleSingnIn, handleSignOut, handleGitHubSignIn, handleGoogleSignIn };

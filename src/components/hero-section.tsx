@@ -1,6 +1,7 @@
 import React from "react"
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Link from "next/link";
 export const HeroSection = () => {
     return (
         <>
@@ -9,7 +10,10 @@ export const HeroSection = () => {
                     <div className="grid items-center gap-8 lg:grid-cols-2">
                         {/* Left Section */}
                         <div className="flex flex-col items-center py-32 text-center lg:mx-auto lg:items-start lg:px-0 lg:text-left">
-                            <p>New Releases</p>
+                            <div className="flex flex-row items-center justify-start">
+                                <div><Link href="#">New Releases </Link></div>
+                                <div><ArrowUpRight size={14} /></div>
+                            </div>
                             <h1 className="my-6 text-pretty text-4xl font-bold lg:text-6xl">
                                 Welcome to Your WorkPlace!
                             </h1>

@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <SessionProvider>
         <body className="flex flex-col items-center justify-center">
-          <div className="container sm:p-2 md:p-3 lg:p-4">
+          <div className="container sm:p-4 md:p-7 lg:p-10">
             <Navbar />
             <div>
               {children}

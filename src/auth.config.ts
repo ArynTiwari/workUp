@@ -1,12 +1,14 @@
 import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 import Discord from "next-auth/providers/discord";
+import Google from "next-auth/providers/google";
 import { signInSchema } from "./lib/zod";
 import prisma from "@/prisma";
 import bcryptjs from "bcryptjs";
 import { NextAuthConfig } from "next-auth";
 export default {
     providers: [
+        Google,
         Discord,
         Github,
         Credentials({

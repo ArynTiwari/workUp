@@ -23,12 +23,12 @@ const ContactSection = () => {
                             <ul className="ml-4 list-disc text-left">
                                 <li className="mb-2">
                                     <span className="font-bold">Phone: </span>
-                                    (123) 34567890
+                                    (+91) 1234567890
                                 </li>
                                 <li>
                                     <span className="font-bold">Email: </span>
                                     <a href="mailto:your-email@example.com" className="underline text-blue-600 hover:text-blue-800">
-                                        your-email@example.com
+                                        quries@workup.com
                                     </a>
                                 </li>
                             </ul>
