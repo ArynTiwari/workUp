@@ -1,0 +1,175 @@
+// Prisma schema for MongoDB
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL") // MongoDB connection string from environment variable
+}
+
+// Enum for user roles
+enum Role {
+  CLIENT
+  FREELANCER
+  ADMIN
+}
+
+// Enum for gender
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+// Enum for Freelancer status
+enum UserStatus {
+  WORKING
+  STUDYING
+}
+
+// User model
+model User {
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String        @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          Role          @default(CLIENT)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  isVerified    Boolean       @default(false)
+  isBoarded     Boolean       @default(false)
+  profile       Profile? // One-to-one relation with Profile
+  applications  Application[] @relation("UserApplications") // Job applications for freelancers
+  blogs         Blog[]        @relation("UserBlogs") // Blogs created by the user
+  comments      Comment[]     @relation("UserComments") // Comments made by the user
+  likes         Like[]        @relation("UserLikes") // Likes made by the user
+  projects      Project[]     @relation("ClientProjects") // Projects created by clients
+  Account       Account[]
+}
+
+// Account model for OAuth integration
+model Account {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String   @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?  @db.String
+  access_token      String?  @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?  @db.String
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+// Profile model
+model Profile {
+  id                     String      @id @default(auto()) @map("_id") @db.ObjectId
+  userName               String
+  bio                    String?
+  gender                 Gender?
+  phoneNumber            Int?
+  age                    Int?
+  city                   String
+  state                  String?
+  zip                    Int?
+  linkedin               String?
+  github                 String?
+  twitter                String?
+  skills                 String[]
+  // Client-specific fields
+  currentWorkExperience  String? // Current work (Client)
+  previousWorkExperience String[] // Previous work experiences (Client)
+  // Freelancer-specific fields
+  highestEducation       String? // Education details (Freelancer)
+  currentJob             String? // Current job (Freelancer)
+  userStatus             UserStatus? // WORKING or STUDYING (Freelancer)
+  certifications         String?
+  availability           String?
+  hourlyRate             Float?
+  freelancingPreferences String?
+  languagePreferences    String?
+  isPublic               Boolean     @default(true)
+  userId                 String      @unique @db.ObjectId
+  user                   User        @relation(fields: [userId], references: [id])
+}
+
+// Application model (for job applications submitted by freelancers)
+model Application {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  coverLetter String
+  createdAt   DateTime @default(now())
+  jobId       String   @db.ObjectId
+  project     Project  @relation(fields: [id], references: [id], name: "JobApplications")
+  userId      String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id], name: "UserApplications")
+}
+
+// Blog model (for blogs posted by users)
+model Blog {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   String
+  authorId  String    @db.ObjectId
+  author    User      @relation(fields: [authorId], references: [id], name: "UserBlogs")
+  comments  Comment[] @relation("BlogComments")
+  likes     Like[]    @relation("BlogLikes")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// Comment model (for comments on blogs)
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  blogId    String   @db.ObjectId
+  blog      Blog     @relation(fields: [blogId], references: [id], name: "BlogComments")
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], name: "UserComments")
+  createdAt DateTime @default(now())
+}
+
+// Like model (for likes on blogs)
+model Like {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  blogId    String   @db.ObjectId
+  blog      Blog     @relation(fields: [blogId], references: [id], name: "BlogLikes")
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id], name: "UserLikes")
+  createdAt DateTime @default(now())
+}
+
+// Project model (for projects created by clients)
+model Project {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  budget      Float
+  paymentType String
+  postedAt    DateTime      @default(now())
+  clientId    String        @db.ObjectId
+  client      User          @relation(fields: [clientId], references: [id], name: "ClientProjects")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  Application Application[] @relation("JobApplications")
+}
+
+// VerificationToken model for user email verification
+model VerificationToken {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String   @unique
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
