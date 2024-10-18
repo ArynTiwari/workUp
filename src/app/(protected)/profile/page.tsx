@@ -3,14 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import LoadingSpinner from "@/components/loading-spinner";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { getUserById } from "@/app/actions/userActions";
 export default async function ProfileSection() {
     const session = await auth();
     const userDetails = await getUserById(session?.user?.id as string);
-    console.log(userDetails)
+
     return (
         <section className="profile-section py-12 bg-gray-50">
             <div className="container mx-auto">
