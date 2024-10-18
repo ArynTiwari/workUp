@@ -183,6 +183,9 @@ const Navbar1 = () => {
                             <Link className={cn('text-muted-foreground', navigationMenuTriggerStyle, buttonVariants({ variant: 'ghost' }),)} href="/blogs">
                                 Blogs
                             </Link>
+                            <Link className={cn('text-muted-foreground', navigationMenuTriggerStyle, buttonVariants({ variant: 'ghost' }),)} href="/news">
+                                News
+                            </Link>
                         </div>
                     </div>
 
