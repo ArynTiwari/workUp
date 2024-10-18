@@ -53,8 +53,8 @@ const people = [
 
 const TeamsSection = () => {
     return (
-        <section className="py-32">
-            <div className="container flex flex-col items-center text-center">
+        <section className="team-section mb-10 p-2">
+            <div className="flex flex-col items-center text-center">
                 <p className="semibold">We&apos;re hiring</p>
                 <h2 className="my-6 text-pretty text-2xl font-bold lg:text-4xl">
                     Meet our team

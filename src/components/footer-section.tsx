@@ -42,7 +42,7 @@ const Footer = () => {
                 <footer>
                     <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
                         <Image
-                            src="/images/workup-logo.svg"
+                            src="https://www.shadcnblocks.com/images/block/block-1.svg"
                             alt="Workup Logo"
                             width={120}
                             height={40}
@@ -57,12 +57,7 @@ const Footer = () => {
                                     <InstagramLogoIcon className="w-6 h-6" />
                                 </Button>
                                 <Button className="p-2.5" variant="default">
-                                    <Image
-                                        src="/images/icons/google-play-icon.svg" // Ensure the Google Play icon is available in the images folder
-                                        alt="Google Play"
-                                        width={24}
-                                        height={24}
-                                    />
+                                    <LinkedInLogoIcon className="w-6 h-6" />
                                 </Button>
                             </div>
                         </div>

@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SessionProvider>
-        <body className="flex flex-col items-center justify-center">
-          <div className="container sm:p-4 md:p-7 lg:p-10">
+        <body className="flex flex-col container mx-auto items-center justify-center">
+          <div className="sm:mx-5 md:mx-10 lg:mx-20 sm:p-4 md:p-6 lg:p-10">
             <Navbar />
-            <div>
+            <div className="container mx-auto">
               {children}
             </div>
           </div>

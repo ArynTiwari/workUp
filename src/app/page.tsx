@@ -7,7 +7,6 @@ import { useSession } from "next-auth/react";
 import Footer from "@/components/footer-section";
 import TeamsSection from "@/components/team-section";
 import ContactSection from "@/components/contact-section";
-import InfoSection from "@/components/info-section";
 export default function Home() {
   const { data: session } = useSession()
   const router = useRouter();
@@ -19,7 +18,6 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <InfoSection />
       <TeamsSection />
       <ContactSection />
       <Footer />
