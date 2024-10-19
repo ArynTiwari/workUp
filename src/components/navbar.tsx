@@ -241,7 +241,9 @@ const Navbar1 = () => {
                             </div>
                         ) : (
                             <>
-                                <Link href='/auth/signin'>Login In</Link>
+                                <Link href='/auth/signin'>
+                                    <Button value="outline">Sign in</Button>
+                                </Link>
                                 <Link href="/auth/signup">
                                     <Button variant="outline">Sign up</Button>
                                 </Link>
