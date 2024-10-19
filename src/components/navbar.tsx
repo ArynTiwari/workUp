@@ -241,7 +241,7 @@ const Navbar1 = () => {
                             </div>
                         ) : (
                             <>
-                                <Button onClick={() => signIn()} variant="outline">Log in</Button>
+                                <Link href='/auth/signin'>Login In</Link>
                                 <Link href="/auth/signup">
                                     <Button variant="outline">Sign up</Button>
                                 </Link>
