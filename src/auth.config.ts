@@ -1,5 +1,4 @@
 import Credentials from "next-auth/providers/credentials";
-import Github from "next-auth/providers/github";
 import Discord from "next-auth/providers/discord";
 import Google from "next-auth/providers/google";
 import { signInSchema } from "./lib/zod";
@@ -10,7 +9,6 @@ export default {
     providers: [
         Google,
         Discord,
-        Github,
         Credentials({
             credentials: {
                 email: { label: "Email", type: "email", placeholder: "Email" },

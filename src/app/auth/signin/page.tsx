@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { signInSchema } from "@/lib/zod";
-import { handleGitHubSignIn, handleGoogleSignIn } from "@/app/actions/authActions";
+import { handleDiscordSignIn, handleGoogleSignIn } from "@/app/actions/authActions";
 import { Button } from "@/components/ui/button";
 import LoadingButton from "@/components/loading-button";
 import { useTransition } from "react";
@@ -137,7 +137,7 @@ export default function SignInWithHero() {
                         <span className="text-sm text-gray-500 text-center block my-2">or</span>
 
                         {/* Discord Sign-In */}
-                        <form className="w-full" action={handleGitHubSignIn}>
+                        <form className="w-full" action={handleDiscordSignIn}>
                             <Button variant="outline" className="w-full" type="submit">
                                 <DiscordLogoIcon className="h-4 w-4 mr-2" />
                                 Sign in with Discord
