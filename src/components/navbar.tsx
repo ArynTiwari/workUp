@@ -113,7 +113,6 @@ const subMenuItems = [
 
 const Navbar1 = () => {
     const { data: session } = useSession();
-
     return (
         <section className="nav">
             <div className="container">
@@ -196,7 +195,7 @@ const Navbar1 = () => {
                                 <DropdownMenu >
                                     <DropdownMenuTrigger asChild>
                                         <Avatar >
-                                            <AvatarImage className='rounded-full' height={37} width={37} src={session.user.image ? session.user.image : 'https://imgs.search.brave.com/TSxhBNUHzzP6vPVtUYGvUIpHQkWDxaw24bgTludq9o4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS12ZWN0/b3IvcHJvZmlsZS1w/aWMtaWNvbi1jb2xv/cmVkLXNoYXBlcy1n/cmFkaWVudF8xMDc2/NjEwLTQ2MDI4Lmpw/Zz9zZW10PWFpc19o/eWJyaWQ'} />
+                                            <AvatarImage className='rounded-full' height={37} width={37} src={session?.user?.image ? session?.user?.image : 'https://imgs.search.brave.com/TSxhBNUHzzP6vPVtUYGvUIpHQkWDxaw24bgTludq9o4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS12ZWN0/b3IvcHJvZmlsZS1w/aWMtaWNvbi1jb2xv/cmVkLXNoYXBlcy1n/cmFkaWVudF8xMDc2/NjEwLTQ2MDI4Lmpw/Zz9zZW10PWFpc19o/eWJyaWQ'} />
                                         </Avatar>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent align='end' className="w-56">

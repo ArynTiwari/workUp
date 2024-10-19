@@ -27,9 +27,7 @@ export default function RootLayout({
         <body className="flex flex-col container mx-auto items-center justify-center">
           <div className="sm:mx-5 md:mx-10 lg:mx-20 sm:p-4 md:p-6 lg:p-10">
             <Navbar />
-            <div className="container mx-auto">
-              {children}
-            </div>
+            {children}
           </div>
           <Toaster />
         </body>

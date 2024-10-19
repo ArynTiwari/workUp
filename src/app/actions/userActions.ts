@@ -40,7 +40,6 @@ export const updateUserProfile = async (values: z.infer<typeof onboardSchema>, i
                     userName,
                     bio,
                     gender,
-                    password,
                     age: age ? Number(age) : undefined,  // Ensure age is stored as a number
                     phoneNumber: phoneNumber ? Number(phoneNumber) : undefined,  // Store phone number as a number
                     skills: skills || [],  // Ensure skills is an array
@@ -62,7 +61,6 @@ export const updateUserProfile = async (values: z.infer<typeof onboardSchema>, i
                     userName,
                     bio,
                     gender,
-                    password,
                     age: age ? Number(age) : undefined,  // Ensure age is stored as a number
                     phoneNumber: phoneNumber ? Number(phoneNumber) : undefined,  // Store phone number as a number
                     skills: skills || [],  // Ensure skills is an array
